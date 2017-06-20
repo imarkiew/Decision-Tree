@@ -288,14 +288,14 @@ void pruneEngine(Node *&node, Data const &data)
 		{
 			for(it = id_and_value.begin(); it != id_and_value.end(); ++it)
 			{
-				id_and_predicted_value[it->first] = 0;
+				id_and_predicted_value[it->first] = 1;
 			}
 		}
 		else
 		{
 			for(it = id_and_value.begin(); it != id_and_value.end(); ++it)
 			{
-				id_and_predicted_value[it->first] = 1;
+				id_and_predicted_value[it->first] = 0;
 			}
 		}
 	
@@ -307,11 +307,11 @@ void pruneEngine(Node *&node, Data const &data)
 			node->isLeaf = true;
 			if(count_1 > count_0)
 			{
-				node->classification = 0;
+				node->classification = 1;
 			}
 			else
 			{
-				node->classification = 1;
+				node->classification = 0;
 			}
 
 			node->destroyRecursive(node->node_A);
@@ -381,5 +381,3 @@ double meanError(vector<double> const  &errors)
 	
 	result = (sum/(double)len)*100;
 }
-
-
